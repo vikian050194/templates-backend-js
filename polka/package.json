@@ -1,0 +1,25 @@
+{
+  "name": "polka-node-api",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "node-dev src/app.js",
+    "test": "mocha ./tests/**/*-tests.js",
+    "cover": "nyc --reporter=html npm run test"
+  },
+  "engines": {
+    "node": "^12.16.3"
+  },
+  "dependencies": {
+    "polka": "^0.5.2"
+  },
+  "devDependencies": {
+    "assert": "^2.0.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.24.0",
+    "mocha": "^8.3.2",
+    "node-dev": "^6.7.0",
+    "nyc": "^15.1.0"
+  }
+}

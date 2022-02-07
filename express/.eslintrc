@@ -1,0 +1,24 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "ecmaFeatures": {
+            "impliedStrict": true,
+            "spread": true
+        }
+    },
+    "extends": "eslint:recommended",
+    "env": {
+        "node": true,
+        "mocha": true
+    },
+    "rules": {
+        "quotes": ["error", "double"],
+        "semi": ["error", "always"],
+        "indent": ["error", 4, { "SwitchCase": 1 }],
+        "no-multiple-empty-lines": ["error", { "max": 1 }],
+        "linebreak-style": ["error", "unix"],
+        "no-console": ["warn", { "allow": ["info", "error"] }],
+        "comma-dangle": ["error", "never"],
+        "no-debugger": "warn"
+    }
+}
