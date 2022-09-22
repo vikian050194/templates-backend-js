@@ -1,13 +1,18 @@
+const port = process.env.PORT || 8080;
+
 const http = require("http");
 
-http.createServer(onRequest).listen(3030);
+const backend = {
+    host: "127.0.0.1",
+    port: 8081
+};
 
-function onRequest(client_req, client_res) {
+http.createServer((client_req, client_res) => {
     console.info("serve: " + client_req.url);
 
     const options = {
-        hostname: "localhost",
-        port: 80,
+        hostname: backend.host,
+        port: backend.port,
         path: client_req.url,
         method: client_req.method,
         headers: client_req.headers
@@ -23,4 +28,6 @@ function onRequest(client_req, client_res) {
     client_req.pipe(proxy, {
         end: true
     });
-}
+}).listen(port, () => {
+    console.info("Server is listening on port", port);
+});
