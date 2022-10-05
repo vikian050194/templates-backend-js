@@ -1,4 +1,4 @@
-const PORT = process.env.PORT || 8081;
+const PORT = process.env.PORT || 8000;
 const PWD = process.env.PWD;
 
 const http = require("http");
@@ -10,6 +10,18 @@ var isApi = new RegExp(/\/api\/(.*)/);
 const backend = {
     host: "127.0.0.1",
     port: 8080
+};
+
+const getMimeType = (ext) => {
+    const types = {
+        "css": "text/css",
+        "html": "text/html",
+        "js": "text/javascript",
+        "json": "application/json",
+        "svg": "image/svg+xml"
+    };
+
+    return types[ext];
 };
 
 http.createServer((client_req, client_res) => {
@@ -38,15 +50,18 @@ http.createServer((client_req, client_res) => {
             end: true
         });
     } else {
-        console.info("loading file at src" + client_req.url);
-
         const file = client_req.url === "/" ? "/index.html" : client_req.url;
+        
+        console.info("loading file: src" + client_req.url);
+        
+        const ext = file.split(".")[1];
         const path = PWD + "/src" + file;
         fs.access(path, fs.F_OK, (err) => {
             if (err) {
                 client_res.statusCode = 404;
                 client_res.end();
             } else {
+                client_res.setHeader("Content-Type", getMimeType(ext));
                 fs.createReadStream(path, "utf8").pipe(client_res);
             }
         });
