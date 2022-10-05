@@ -1,10 +1,10 @@
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8000;
 
 const http = require("http");
 
 const backend = {
     host: "127.0.0.1",
-    port: 8081
+    port: 8080
 };
 
 http.createServer((client_req, client_res) => {
