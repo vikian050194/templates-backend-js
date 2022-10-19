@@ -5,7 +5,8 @@ const http = require("http");
 const url = require("url");
 const fs = require("fs");
 
-var isApi = new RegExp(/\/api\/(.*)/);
+const dir = "src";
+const isApi = new RegExp(/\/api\/(.*)/);
 
 const backend = {
     host: "127.0.0.1",
@@ -52,10 +53,10 @@ http.createServer((client_req, client_res) => {
     } else {
         const file = client_req.url === "/" ? "/index.html" : client_req.url;
         
-        console.info("loading file: src" + client_req.url);
+        console.info(`loading file: ${dir}${client_req.url}`);
         
         const ext = file.split(".")[1];
-        const path = PWD + "/src" + file;
+        const path = `${PWD}/${dir}${file}`;
         fs.access(path, fs.F_OK, (err) => {
             if (err) {
                 client_res.statusCode = 404;
