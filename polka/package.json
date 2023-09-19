@@ -6,7 +6,7 @@
     "start": "node src/app.js",
     "dev": "node-dev src/app.js",
     "test": "mocha ./tests/**/*-tests.js",
-    "cover": "nyc --reporter=html npm run test"
+    "cover": "c8 --reporter=html npm run test"
   },
   "engines": {
     "node": "^12.16.3"
@@ -15,11 +15,11 @@
     "polka": "^0.5.2"
   },
   "devDependencies": {
+    "c8": "8.0.1",
     "assert": "^2.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.24.0",
     "mocha": "^8.3.2",
-    "node-dev": "^6.7.0",
-    "nyc": "^15.1.0"
+    "node-dev": "^6.7.0"
   }
 }
