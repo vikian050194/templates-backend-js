@@ -2,6 +2,7 @@ const PORT = process.env.PORT || 8000;
 const PWD = process.env.PWD;
 
 const http = require("http");
+const url = require("url");
 const fs = require("fs");
 
 const dir = "build";
@@ -21,7 +22,8 @@ const getMimeType = (ext) => {
 http.createServer((client_req, client_res) => {
     console.info(`Request: ${client_req.url}`);
 
-    const file = client_req.url === "/" ? "/index.html" : client_req.url;
+    const pathname = url.parse(client_req.url).pathname;
+    const file = pathname === "/" ? "/index.html" : pathname;
 
     console.info(`File: ${dir}${file}`);
 
