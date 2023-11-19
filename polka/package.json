@@ -15,9 +15,8 @@
     "polka": "^0.5.2"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "7.22.15",
     "c8": "8.0.1",
-    "assert": "^2.0.0",
-    "babel-eslint": "^10.1.0",
     "eslint": "^7.24.0",
     "mocha": "^8.3.2",
     "node-dev": "^6.7.0"
